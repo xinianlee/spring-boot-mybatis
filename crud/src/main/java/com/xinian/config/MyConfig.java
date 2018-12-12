@@ -1,8 +1,8 @@
-package com.xinian.crud.config;
+package com.xinian.config;
 
 
 
-import com.xinian.crud.component.MyLocaleResolver;
+import com.xinian.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
