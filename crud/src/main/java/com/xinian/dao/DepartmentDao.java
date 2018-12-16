@@ -1,12 +1,12 @@
 package com.xinian.dao;
 
+
 import com.xinian.entities.Department;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 @Repository
