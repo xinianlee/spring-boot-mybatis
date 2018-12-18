@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -37,5 +37,35 @@ public class EmployeeController {
 		Collection<Department> departments = departmentDao.getDepartments();
 		map.addAttribute("depts",departments);
 		return "emp/add";
+	}
+
+	@PostMapping(value = "/emp")
+	public String addEmployee(Employee employee){
+		employeeDao.save(employee);
+		System.out.println(employee);
+		return "redirect:/emps";
+	}
+
+	//根据ID获取要修改的用户的信息
+	@GetMapping(value = "/emp/{id}")
+	public String updateEmp(@PathVariable("id") Integer id,Model model){
+		Employee employee = employeeDao.get(id);
+		model.addAttribute("emp",employee);
+		Collection<Department> departments = departmentDao.getDepartments();
+		model.addAttribute("depts",departments);
+		return "emp/add";
+	}
+	//修改
+	@PutMapping(value = "/emp")
+	public String upEmp(Employee employee){
+		System.out.println("要修改的员工信息：=="+employee);
+		employeeDao.save(employee);
+		return "redirect:/emps";
+	}
+	//删除员工的方法
+	@DeleteMapping(value = "/emp/{id}")
+	public String delEmp(@PathVariable("id") Integer id){
+		employeeDao.delete(id);
+		return "redirect:/emps";
 	}
 }
