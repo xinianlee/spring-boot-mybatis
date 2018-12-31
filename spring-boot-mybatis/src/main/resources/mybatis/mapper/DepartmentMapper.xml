@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinian.springbootmybatis.mapper.DepartmentMapper">
+    <select id="getDepartmentById" resultType="Department">
+        SELECT * FROM department WHERE id=#{id}
+    </select>
+
+    <insert id="saveDepartment" >
+        INSERT INTO department(id,dept_name) VALUES (#{id},#{deptName})
+    </insert>
+
+    <update id="updateDepartment">
+        UPDATE department SET dept_name=#{deptName} where id=#{id}
+    </update>
+
+    <delete id="removeDepartment" >
+        DELETE department WHERE id=#{id}
+    </delete>
+</mapper>
